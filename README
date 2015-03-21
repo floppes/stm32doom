@@ -1,0 +1,43 @@
+STM32Doom
+
+This is a port of Chocolate Doom for the STM32F429IDISCOVERY evaluation board.
+The board features the STM32F429 ARM Cortex-M4 microcontroller with 8 MB
+external SD-RAM and a 320x240 pixel LCD panel with touchscreen controller.
+
+You need to attach a USB memory stick (formatted as FAT32) to USB USER (micro
+USB connector) using a USB-OTG cable. The USB stick must contain a /doom
+directory with the file doom1.wad inside it. This file is the WAD file shipped
+with the original Doom shareware released by id Software in 1993. doom.wad from
+the retail version is too big and therefore not supported.
+
+The port makes use of the STM32 standard peripherals library, STM32 USB library,
+ChaN's FatFs library, ub's libraries for STM32F429 and of course Chocolate Doom.
+
+
+Compilation
+
+Using the GNU Tools for ARM Embedded Processors and 'make' just run:
+# make
+
+
+Video
+
+http://www.youtube.com/watch?v=bRNcfsDIc2A
+
+
+Links
+
+STM32F429 evaluation board
+http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/PF259090
+
+Chocolate Doom
+https://github.com/chocolate-doom/chocolate-doom
+
+FatFs
+http://elm-chan.org/fsw/ff/00index_e.html
+
+ub's STM32F429 Libraries
+http://mikrocontroller.bplaced.net
+
+GCC ARM
+http://launchpad.net/gcc-arm-embedded
