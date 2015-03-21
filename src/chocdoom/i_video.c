@@ -40,6 +40,7 @@ rcsid[] = "$Id: i_x.c,v 1.6 1997/02/03 22:45:10 b1 Exp $";
 #include <stdbool.h>
 #include "lcd.h"
 #include "gfx.h"
+#include "images.h"
 #include "touch.h"
 #include "button.h"
 
@@ -109,7 +110,8 @@ void I_InitGraphics (void)
 	gfx_image_t keys_img;
 	gfx_coord_t coords;
 
-	gfx_load_img (FILES_DIR"/keys.img", &keys_img);
+	gfx_init_img (&keys_img, 40, 320, GFX_PIXEL_FORMAT_RGB565, RGB565_BLACK);
+	keys_img.pixel_data = (uint8_t*)img_keys;
 	gfx_init_img_coord (&coords, &keys_img);
 
 	gfx_draw_img (&keys_img, &coords);
