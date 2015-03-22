@@ -125,7 +125,7 @@
   */           
 #if defined(STM32F40_41xxx) || defined(STM32F427_437xx)  || defined(STM32F429_439xx) || defined(STM32F401xx)  || defined(STM32F411xE)
  #if !defined  (HSE_VALUE) 
-  #define HSE_VALUE    ((uint32_t)25000000) /*!< Value of the External oscillator in Hz */
+  #define HSE_VALUE    ((uint32_t)8000000) /*!< Value of the External oscillator in Hz */
 #endif /* HSE_VALUE */
 #elif defined(STM32F446xx)
  #if !defined  (HSE_VALUE) 
@@ -9928,7 +9928,13 @@ typedef struct
 
 #define MODIFY_REG(REG, CLEARMASK, SETMASK)  WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK)))
 
+#define enable_interrupts() __asm volatile ("cpsie i");
+
+#define disable_interrupts() __asm volatile ("cpsid i");
+
 #define nop() __asm volatile ("mov r0, r0");
+
+#define sleep_mode() __asm volatile ("wfi");
 
 /**
   * @}
