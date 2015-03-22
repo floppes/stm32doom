@@ -405,15 +405,15 @@ static void USB_OTG_BSP_TimeInit ( void )
   /* Configure the Priority Group to 2 bits */
   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
   
-  /* Enable the TIM2 gloabal Interrupt */
-  NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+  /* Enable the TIM5 global Interrupt */
+  NVIC_InitStructure.NVIC_IRQChannel = TIM5_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   
   NVIC_Init(&NVIC_InitStructure);
   
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);  
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);
 #endif  
 }
 
@@ -468,20 +468,20 @@ void USB_OTG_BSP_mDelay (const uint32_t msec)
   * @retval None
   */
 
-void TIM2_IRQHandler (void)
+void TIM5_IRQHandler (void)
 {
 #ifdef USE_ACCURATE_TIME 
     
-  if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+  if (TIM_GetITStatus(TIM5, TIM_IT_Update) != RESET)
   {
-    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+    TIM_ClearITPendingBit(TIM5, TIM_IT_Update);
     if (BSP_delay > 0x00)
     { 
       BSP_delay--;
     }
     else
     {
-      TIM_Cmd(TIM2,DISABLE);
+      TIM_Cmd(TIM5,DISABLE);
     }
   }
 #endif  
@@ -490,7 +490,7 @@ void TIM2_IRQHandler (void)
 #ifdef USE_ACCURATE_TIME 
 /**
   * @brief  BSP_Delay
-  *         Delay routine based on TIM2
+  *         Delay routine based on TIM5
   * @param  nTime : Delay Time 
   * @param  unit : Delay Time unit : mili sec / micro sec
   * @retval None
@@ -501,12 +501,12 @@ static void BSP_Delay(uint32_t nTime, uint8_t unit)
   BSP_delay = nTime;
   BSP_SetTime(unit);  
   while(BSP_delay != 0);
-  TIM_Cmd(TIM2,DISABLE);
+  TIM_Cmd(TIM5,DISABLE);
 }
 
 /**
   * @brief  BSP_SetTime
-  *         Configures TIM2 for delay routine based on TIM2
+  *         Configures TIM5 for delay routine based on TIM5
   * @param  unit : msec /usec
   * @retval None
   */
@@ -514,8 +514,8 @@ static void BSP_SetTime(uint8_t unit)
 {
   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
   
-  TIM_Cmd(TIM2,DISABLE);
-  TIM_ITConfig(TIM2, TIM_IT_Update, DISABLE); 
+  TIM_Cmd(TIM5,DISABLE);
+  TIM_ITConfig(TIM5, TIM_IT_Update, DISABLE);
   
   
   if(unit == TIM_USEC_DELAY)
@@ -530,16 +530,16 @@ static void BSP_SetTime(uint8_t unit)
   TIM_TimeBaseStructure.TIM_ClockDivision = 0;
   TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
   
-  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
-  TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+  TIM_TimeBaseInit(TIM5, &TIM_TimeBaseStructure);
+  TIM_ClearITPendingBit(TIM5, TIM_IT_Update);
   
-  TIM_ARRPreloadConfig(TIM2, ENABLE);
+  TIM_ARRPreloadConfig(TIM5, ENABLE);
   
   /* TIM IT enable */
-  TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+  TIM_ITConfig(TIM5, TIM_IT_Update, ENABLE);
   
-  /* TIM2 enable counter */ 
-  TIM_Cmd(TIM2, ENABLE);  
+  /* TIM5 enable counter */
+  TIM_Cmd(TIM5, ENABLE);
 } 
 
 #endif
