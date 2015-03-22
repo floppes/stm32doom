@@ -15,10 +15,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
-#include "stm32f4xx_gpio.h"
-#include "stm32f4xx_misc.h"
-#include "stm32f4xx_rcc.h"
-#include "stm32f4xx_usart.h"
+#include "stm32f4xx.h"
 #include "debug.h"
 
 /*---------------------------------------------------------------------*

@@ -13,10 +13,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "stm32f4xx.h"
-#include "stm32f4xx_gpio.h"
-#include "stm32f4xx_ltdc.h"
-#include "stm32f4xx_misc.h"
-#include "stm32f4xx_rcc.h"
 #include "gfx.h"
 #include "lcd.h"
 #include "main.h"

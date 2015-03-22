@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "stm32f4xx_dma2d.h"
+#include "stm32f4xx.h"
 #include "ff.h"
 #include "font.h"
 #include "gfx.h"
