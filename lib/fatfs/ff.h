@@ -293,14 +293,14 @@ int ff_del_syncobj (_SYNC_t sobj);				/* Delete a sync object */
 
 /* File access control and file status flags (FIL.flag) */
 
-#define	FA_READ				0x01
-#define	FA_OPEN_EXISTING	0x00
+#define	FA_READ				0x01	/* Specifies read access to the object. Data can be read from the file. Combine with FA_WRITE for read-write access. */
+#define	FA_OPEN_EXISTING	0x00	/* Opens the file. The function fails if the file is not existing. (Default) */
 
 #if !_FS_READONLY
-#define	FA_WRITE			0x02
-#define	FA_CREATE_NEW		0x04
-#define	FA_CREATE_ALWAYS	0x08
-#define	FA_OPEN_ALWAYS		0x10
+#define	FA_WRITE			0x02	/* Specifies write access to the object. Data can be written to the file. Combine with FA_READ for read-write access. */
+#define	FA_CREATE_NEW		0x04	/* Creates a new file. The function fails with FR_EXIST if the file is existing. */
+#define	FA_CREATE_ALWAYS	0x08	/* Creates a new file. If the file is existing, it will be truncated and overwritten. */
+#define	FA_OPEN_ALWAYS		0x10	/* Opens the file if it is existing. If not, a new file is created. */
 #define FA__WRITTEN			0x20
 #define FA__DIRTY			0x40
 #endif
