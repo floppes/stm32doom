@@ -12,12 +12,6 @@
 //--------------------------------------------------------------
 #include "stm32f4xx.h"
 #include "diskio.h"
-#include "stm32f4xx_gpio.h"
-#include "stm32f4xx_rcc.h"
-#include "stm32f4xx_misc.h"
-#include "stm32f4xx_sdio.h"
-#include "stm32f4xx_dma.h"
-
 
 //--------------------------------------------------------------
 // Revision der STM32F4 CPU (A oder Z)
