@@ -20,6 +20,18 @@ Using the GNU Tools for ARM Embedded Processors and 'make' just run:
 # make
 
 
+Controls
+
+The screen is divided into several touch areas with the following functions:
+
+Bottom left: strafe left
+Bottom right: strafe right
+Bottom center: back/menu down
+Upper left: turn left
+Upper right: turn right
+Upper center: forward/menu up
+
+
 Video
 
 http://www.youtube.com/watch?v=bRNcfsDIc2A
