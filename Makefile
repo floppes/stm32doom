@@ -25,7 +25,7 @@ CC       = arm-none-eabi-gcc
 BIN      = arm-none-eabi-objcopy
 OBJDUMP  = arm-none-eabi-objdump
 SIZE     = arm-none-eabi-size
-CFLAGS   = -mthumb -mtune=cortex-m4 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian -Wall $(DEFINES) -g -I $(SRCDIR) -I $(SRCDIR)/$(DOOMDIR) -I $(LIBDIR)/stm32 -I $(LIBDIR)/usb -I $(LIBDIR)/fatfs -O2 -c
+CFLAGS   = -mthumb -mtune=cortex-m4 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian -fcommon -Wall $(DEFINES) -g -I $(SRCDIR) -I $(SRCDIR)/$(DOOMDIR) -I $(LIBDIR)/stm32 -I $(LIBDIR)/usb -I $(LIBDIR)/fatfs -O2 -c
 LDFLAGS  = -mthumb -mtune=cortex-m4 -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mlittle-endian -lm -nostartfiles -T$(LDSCRIPT) -Wl,-Map=$(BINDIR)/$(TARGET).map
 
 OBJS     = $(addprefix $(SRCDIR)/, $(SRC:.c=.o)) $(addprefix $(LIBDIR)/, $(LIB:.c=.o))
